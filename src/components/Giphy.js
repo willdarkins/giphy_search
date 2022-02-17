@@ -16,13 +16,14 @@ const Giphy = () => {
         setLoading(true)
         //trying to run API call fro content but throw error if not possible    
         try {
-            const { data } = await axios.get(`https://fapi.giphy.com/v1/gifs/trending?api_key=LWWhHBcSHdmy5Nshmkte5jUOYsozacsy`)
+            const { data } = await axios.get(`https://5api.giphy.com/v1/gifs/trending?api_key=LWWhHBcSHdmy5Nshmkte5jUOYsozacsy`)
             //console.log(data)
             setContent(data.data)
             //dismounts Loading component by setting state to false 
             setLoading(false)
         } catch (error) {
             setError(true)
+            setTimeout(() => setError(false), 3000)
         }
     }
     //passing API response through useEffect
@@ -47,7 +48,8 @@ const Giphy = () => {
             </div>
         )
     }
-
+    
+    //renders error from bootstrap if state variable is true
     const renderError = () => {
         if (error) {
             return (
