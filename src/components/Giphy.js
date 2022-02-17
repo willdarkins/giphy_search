@@ -5,6 +5,8 @@ import Loading from './Loading';
 const Giphy = () => {
     //manages data from API
     const [content, setContent] = useState([])
+    //manages search term
+    const [search, setSearch] = useState('')
     //manages the loading animation
     const [loading, setLoading] = useState(false)
     //manages error message when content cannot load
@@ -48,7 +50,7 @@ const Giphy = () => {
             </div>
         )
     }
-    
+
     //renders error from bootstrap if state variable is true
     const renderError = () => {
         if (error) {
@@ -60,9 +62,39 @@ const Giphy = () => {
         }
     }
 
+    //handles onChange functionality from the input tag
+    const searchChange = event => {
+        setSearch(event.target.value)
+    }
+
+    //handles button submit for search
+    const submitChange = async event => {
+        event.preventDefault();
+        setError(false)
+        setLoading(true)
+            const { data } = await axios.get(`https://api.giphy.com/v1/gifs/search?api_key=LWWhHBcSHdmy5Nshmkte5jUOYsozacsy&q=${search}`)
+            setContent(data.data)
+            setLoading(false)
+    }
+
     return (
-        <div className='m-2'>
+        <div className="container">
             {renderError()}
+            <form className="form">
+                <input 
+                className='form-control'
+                value={search}
+                type='text'
+                placeholder='Search for GIFS!!!'
+                onChange={searchChange}
+                />
+                <button
+                type='submit'
+                onClick={submitChange}
+                className="btn btn-primary mx-2">
+                    Go!
+                </button>
+            </form>
             <div className='container gifs'>
                 {renderGifs()}
             </div>
