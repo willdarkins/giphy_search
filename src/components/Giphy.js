@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
+import Loading from './Loading';
 
 const Giphy = () => {
     //useState to store data from API
@@ -20,7 +21,7 @@ const Giphy = () => {
 
     const renderGifs = () => {
         if(isLoading) {
-            return <div>Loading...</div>
+            return <Loading />
         }
         // iterating over captured data from API by accessing the state variable
         return(
