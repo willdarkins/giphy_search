@@ -16,7 +16,7 @@ const Giphy = () => {
         setLoading(true)
         //trying to run API call fro content but throw error if not possible    
         try {
-            const { data } = await axios.get(`https://api.giphy.com/v1/gifs/trending?api_key=LWWhHBcSHdmy5Nshmkte5jUOYsozacsy`)
+            const { data } = await axios.get(`https://fapi.giphy.com/v1/gifs/trending?api_key=LWWhHBcSHdmy5Nshmkte5jUOYsozacsy`)
             //console.log(data)
             setContent(data.data)
             //dismounts Loading component by setting state to false 
@@ -30,6 +30,7 @@ const Giphy = () => {
         giphyResponse()
     }, [])
 
+    //renders GIFS through .map
     const renderGifs = () => {
         //if the loading state is true, render the Loading animation
         if (loading) {
@@ -46,9 +47,23 @@ const Giphy = () => {
             </div>
         )
     }
+
+    const renderError = () => {
+        if (error) {
+            return (
+                <div class="alert alert-danger alert-dismissable fade show" role="alert">
+                    Something fucked up and it could be your fault ‼️😯
+                </div>
+            )
+        }
+    }
+
     return (
-        <div className='container gifs'>
-            {renderGifs()}
+        <div className='m-2'>
+            {renderError()}
+            <div className='container gifs'>
+                {renderGifs()}
+            </div>
         </div>
     )
 }
