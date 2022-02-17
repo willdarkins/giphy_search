@@ -1,11 +1,12 @@
-import './App.css';
+import React from 'react'
+import Giphy from './components/Giphy'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <h1>Is this working?</h1>
-    </div>
-  );
+    <>
+      <Giphy />
+    </>
+  )
 }
 
-export default App;
+export default App
