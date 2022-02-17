@@ -3,18 +3,27 @@ import axios from 'axios'
 import Loading from './Loading';
 
 const Giphy = () => {
-    //useState to store data from API
+    //manages data from API
     const [content, setContent] = useState([])
-    //useState to manage the loading animation
-    const [isLoading, setIsLoading] = useState(false)
+    //manages the loading animation
+    const [loading, setLoading] = useState(false)
+    //manages error message when content cannot load
+    const [error, setError] = useState(false)
+
     //calling giphy api
     const giphyResponse = async () => {
-        setIsLoading(true)
-        const { data } = await axios.get(`https://api.giphy.com/v1/gifs/trending?api_key=LWWhHBcSHdmy5Nshmkte5jUOYsozacsy`)
-        //console.log(data)
-        setContent(data.data)
-        //dismounts Loading component by setting state to false 
-        setIsLoading(false)
+        setError(false)
+        setLoading(true)
+        //trying to run API call fro content but throw error if not possible    
+        try {
+            const { data } = await axios.get(`https://api.giphy.com/v1/gifs/trending?api_key=LWWhHBcSHdmy5Nshmkte5jUOYsozacsy`)
+            //console.log(data)
+            setContent(data.data)
+            //dismounts Loading component by setting state to false 
+            setLoading(false)
+        } catch (error) {
+            setError(true)
+        }
     }
     //passing API response through useEffect
     useEffect(() => {
@@ -23,7 +32,7 @@ const Giphy = () => {
 
     const renderGifs = () => {
         //if the loading state is true, render the Loading animation
-        if (isLoading) {
+        if (loading) {
             return <Loading />
         }
         // iterating over captured data from API by accessing the state variable
@@ -36,7 +45,6 @@ const Giphy = () => {
                 )}
             </div>
         )
-
     }
     return (
         <div className='container gifs'>
