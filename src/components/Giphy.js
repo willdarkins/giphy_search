@@ -20,6 +20,8 @@ const Giphy = () => {
     const indexOfLastItem = currentPage * itemsPerPage
     //to find the first indexed item per-page, when need to subtract the last item by the items per page (25)
     const indexOfFirstItem = indexOfLastItem - itemsPerPage
+    //taking the content state and slicing all GIFS from the first, to last index in the array and displaying them on each page
+    const currentItems = content.slice(indexOfFirstItem, indexOfLastItem)
 
     //calling giphy API
     const giphyResponse = async () => {
@@ -27,7 +29,7 @@ const Giphy = () => {
         setLoading(true)
         //trying to run API call fro content but throw error if not possible    
         try {
-            const { data } = await axios.get(`https://api.giphy.com/v1/gifs/trending?api_key=LWWhHBcSHdmy5Nshmkte5jUOYsozacsy`)
+            const { data } = await axios.get(`https://api.giphy.com/v1/gifs/trending?api_key=LWWhHBcSHdmy5Nshmkte5jUOYsozacsy&limit=1000`)
             //console.log(data)
             setContent(data.data)
             //dismounts Loading component by setting state to false 
@@ -51,7 +53,7 @@ const Giphy = () => {
         // iterating over captured data from API by accessing the state variable
         return (
             <div className='gifs'>
-                {content.map((i) =>
+                {currentItems.map((i) =>
                     <div key={i.id} className='gif'>
                         <img src={i.images.fixed_height.url} alt='gif' />
                     </div>
