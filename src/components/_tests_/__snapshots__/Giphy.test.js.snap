@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Giphy component matches snapshot DOM node structure 1`] = `
+<DocumentFragment>
+  <div
+    class="container"
+    data-testid="giphy-1"
+  >
+    <form
+      class="form"
+    >
+      <input
+        class="form-control"
+        placeholder="Search for GIFS!!!"
+        type="text"
+        value=""
+      />
+      <button
+        class="btn btn-primary mx-2"
+        type="submit"
+      >
+        Go!
+      </button>
+    </form>
+    <nav>
+      <ul
+        class="pagination pagination-sm justify-content-end border-0"
+      />
+    </nav>
+    <div
+      class="container gifs"
+    >
+      <div
+        class="loader"
+      >
+        <i
+          class="fas fa-spinner fa-4x fa-spin"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
