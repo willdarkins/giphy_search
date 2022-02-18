@@ -1,14 +1,14 @@
 import { render, cleanup } from '@testing-library/react';
-import Giphy from '../Giphy'
+import Loading from '../Loading'
 
 afterEach(cleanup);
 
 describe('Giphy component', () => {
     it('renders', () => {
-      render(<Giphy />);
+      render(<Loading />);
     });
     it('matches snapshot DOM node structure', () => {
-        const { asFragment } = render(<Giphy />);
+        const { asFragment } = render(<Loading />);
         expect(asFragment()).toMatchSnapshot();
     })
   })
