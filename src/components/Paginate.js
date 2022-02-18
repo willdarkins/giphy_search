@@ -10,11 +10,11 @@ const Paginate = (props) => {
     }
   return (
     <nav>
-        <ul className="pagination">
+        <ul className="pagination pagination-sm justify-content-end border-0">
             {pageNumbers.map(number => {
                 return(
                     <li className='page-item'>
-                        <a href='!#' className='page-link'>{number}</a>
+                        <a onClick={()=> props.pageSelected(number)} href='!#' className='page-link'>{number}</a>
                     </li>
                 )
             })}

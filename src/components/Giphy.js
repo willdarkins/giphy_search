@@ -92,6 +92,9 @@ const Giphy = () => {
 
     }
 
+    const pageSelected = (pageNumber) => {
+        setCurrentPage(pageNumber)
+    }
     return (
         <div className="container">
             {renderError()}
@@ -110,7 +113,11 @@ const Giphy = () => {
                     Go!
                 </button>
             </form>
-            <Paginate currentPage={currentPage} itemsPerPage={itemsPerPage} totalItems={content.length} />
+            <Paginate
+            pageSelected={pageSelected}
+            currentPage={currentPage}
+            itemsPerPage={itemsPerPage}
+            totalItems={content.length} />
             <div className='container gifs'>
                 {renderGifs()}
             </div>
