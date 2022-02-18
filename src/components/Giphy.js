@@ -30,7 +30,7 @@ const Giphy = () => {
         setLoading(true)
         //trying to run API call fro content but throw error if not possible    
         try {
-            const { data } = await axios.get(`https://api.giphy.com/v1/gifs/trending?api_key=LWWhHBcSHdmy5Nshmkte5jUOYsozacsy&limit=1000`)
+            const { data } = await axios.get(`https://api.giphy.com/v1/gifs/trending?api_key=${process.env.REACT_APP_API_KEY}&limit=1000`)
             //console.log(data)
             setContent(data.data)
             //dismounts Loading component by setting state to false 
@@ -88,7 +88,7 @@ const Giphy = () => {
         setError(false)
         setLoading(true)
         try {
-            const { data } = await axios.get(`https://api.giphy.com/v1/gifs/search?api_key=LWWhHBcSHdmy5Nshmkte5jUOYsozacsy&q=${search}`)
+            const { data } = await axios.get(`https://api.giphy.com/v1/gifs/search?api_key=${process.env.REACT_APP_API_KEY}&q=${search}`)
             setContent(data.data)
             setLoading(false)
         } catch (error) {
