@@ -1,14 +1,14 @@
 import { render, cleanup } from '@testing-library/react';
-import Loading from '../Loading'
+import Paginate from '../Paginate'
 
 afterEach(cleanup);
 
-describe('Loading component', () => {
+describe('Paginate component', () => {
     it('renders', () => {
-      render(<Loading />);
+      render(<Paginate />);
     });
     it('matches snapshot DOM node structure', () => {
-        const { asFragment } = render(<Loading />);
+        const { asFragment } = render(<Paginate />);
         expect(asFragment()).toMatchSnapshot();
     })
   })

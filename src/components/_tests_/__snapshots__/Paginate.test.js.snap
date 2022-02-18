@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Paginate component matches snapshot DOM node structure 1`] = `
+<DocumentFragment>
+  <nav>
+    <ul
+      class="pagination pagination-sm justify-content-end border-0"
+    />
+  </nav>
+</DocumentFragment>
+`;
