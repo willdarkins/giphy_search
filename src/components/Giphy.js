@@ -110,7 +110,7 @@ const Giphy = () => {
                     Go!
                 </button>
             </form>
-            <Paginate />
+            <Paginate currentPage={currentPage} itemsPerPage={itemsPerPage} totalItems={content.length} />
             <div className='container gifs'>
                 {renderGifs()}
             </div>
