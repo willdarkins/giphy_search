@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import axios from 'axios'
 import Loading from './Loading';
 import Paginate from './Paginate';
@@ -53,10 +54,13 @@ const Giphy = () => {
         // iterating over captured data from API by accessing the state variable
         return (
             <div className='gifs'>
-                {currentItems.map((i) =>
-                    <div key={i.id} className='gif'>
-                        <img src={i.images.fixed_height.url} alt='gif' />
-                    </div>
+                {currentItems.map((gif, i) =>
+                    <motion.div key={gif.id} className='gif'
+                    initial={{opacity: 0, translateX: -50, translateY: -50}}
+                    animate={{opacity: 1, translateX: 0, translateY: 0 }}
+                    transition={{duration: 1, delay: i * .1}}>
+                        <img src={gif.images.fixed_height.url} alt='gif' />
+                    </motion.div>
                 )}
             </div>
         )
