@@ -102,7 +102,7 @@ const Giphy = () => {
         setCurrentPage(pageNumber)
     }
     return (
-        <div className="container">
+        <div className="container" data-testid= "giphy-1">
             {renderError()}
             <form className="form">
                 <input
