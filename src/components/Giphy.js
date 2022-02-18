@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import Loading from './Loading';
+import Paginate from './Paginate';
 
 const Giphy = () => {
     //manages data from API
@@ -109,6 +110,7 @@ const Giphy = () => {
                     Go!
                 </button>
             </form>
+            <Paginate />
             <div className='container gifs'>
                 {renderGifs()}
             </div>
