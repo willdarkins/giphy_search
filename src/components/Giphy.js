@@ -11,6 +11,14 @@ const Giphy = () => {
     const [loading, setLoading] = useState(false)
     //manages error message when content cannot load
     const [error, setError] = useState(false)
+    //manages which page user is currently on in pagination
+    const[currentPage, setCurrentPage] = useState(1)
+    //manages how many gifs will display per page
+    const[itemsPerPage, setItemsPerPage] = useState(25)
+    //if there are 25 items per page, multiplying that number by the actual page will give us the idexed last item
+    const indexOfLastItem = currentPage * itemsPerPage
+    //to find the first indexed item per-page, when need to subtract the last item by the items per page (25)
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage
 
     //calling giphy API
     const giphyResponse = async () => {
